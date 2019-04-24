@@ -1,19 +1,21 @@
 import React from "react";
 import "./AddButton.css";
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/themes/theme-c137.css";
 
 export class AddButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: 0 };
-    this.buttonClickedToAdd = this.buttonClickedToAdd.bind(this);
-    this.buttonClickedToDelete = this.buttonClickedToDelete.bind(this);
+    this.buttonPressedToAdd = this.buttonPressedToAdd.bind(this);
+    this.buttonPressedToDelete = this.buttonPressedToDelete.bind(this);
   }
 
-  buttonClickedToAdd(event) {
+  buttonPressedToAdd(event) {
     this.setState({ value: this.state.value + 1 });
   }
 
-  buttonClickedToDelete(event) {
+  buttonPressedToDelete(event) {
     if (this.state.value === 0) {
       this.setState({ value: this.state.value });
     } else {
@@ -23,14 +25,26 @@ export class AddButton extends React.Component {
 
   render() {
     return (
-      <div className="counter">
-        <div className="numberResult">{this.state.value}</div>
-        <button className="add" onClick={this.buttonClickedToAdd}>
+      <div className="Counter">
+        <div className="NumberResult">{this.state.value}</div>
+        <div className="MarginAdd" />
+        <AwesomeButton
+          type="secondary"
+          className="add"
+          onPress={this.buttonPressedToAdd}
+        >
           <b>Click to add</b>
-        </button>
-        <button className="delete" onClick={this.buttonClickedToDelete}>
-          <b>Click to delete</b>.
-        </button>
+        </AwesomeButton>
+        <div className="MarginDelete">
+          <AwesomeButton
+            type="secondary"
+            className="delete"
+            onPress={this.buttonPressedToDelete}
+          >
+            <b>Click to delete</b>.
+          </AwesomeButton>
+        </div>
+        .
       </div>
     );
   }

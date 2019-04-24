@@ -8,9 +8,11 @@ function App() {
     <div className="App">
       <img src={logo} className="App-logo" alt="logo" />
       <p>Project Javascript Counter</p>
+
       <a href="https://github.com/yfrance">
         <b>Yan France</b>
       </a>
+
       <div>
         <AddButton />
       </div>
