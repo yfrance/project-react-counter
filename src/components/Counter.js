@@ -1,24 +1,22 @@
 import React from "react";
-import "./AddButton.css";
+import "./Counter.css";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/themes/theme-c137.css";
 
-export class AddButton extends React.Component {
+export class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: 0 };
-    this.buttonPressedToAdd = this.buttonPressedToAdd.bind(this);
-    this.buttonPressedToDelete = this.buttonPressedToDelete.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  buttonPressedToAdd(event) {
+  handleAdd(event) {
     this.setState({ value: this.state.value + 1 });
   }
 
-  buttonPressedToDelete(event) {
-    if (this.state.value === 0) {
-      this.setState({ value: this.state.value });
-    } else {
+  handleDelete(event) {
+    if (!this.state.value <= 0) {
       this.setState({ value: this.state.value - 1 });
     }
   }
@@ -31,7 +29,7 @@ export class AddButton extends React.Component {
         <AwesomeButton
           type="secondary"
           className="add"
-          onPress={this.buttonPressedToAdd}
+          onPress={this.handleAdd}
         >
           <b>Click to add</b>
         </AwesomeButton>
@@ -39,7 +37,7 @@ export class AddButton extends React.Component {
           <AwesomeButton
             type="secondary"
             className="delete"
-            onPress={this.buttonPressedToDelete}
+            onPress={this.handleDelete}
           >
             <b>Click to delete</b>.
           </AwesomeButton>
